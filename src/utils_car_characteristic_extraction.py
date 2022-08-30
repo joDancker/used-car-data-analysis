@@ -174,26 +174,26 @@ def extract_publication_datetime(date_time):
         date_time = datetime_of_publication(6, datetime_parts[-1])
     elif "mars" in datetime_parts:
         datetime_parts[1] = "mar."
-        date_time = datetime.strptime(" ".join(datetime_parts), "%d %b. %H:%M")
+        date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "maj" in datetime_parts:
         datetime_parts[1] = "may."
-        date_time = datetime.strptime(" ".join(datetime_parts), "%d %b. %H:%M")
+        date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "juni" in datetime_parts:
         datetime_parts[1] = "jun."
-        date_time = datetime.strptime(" ".join(datetime_parts), "%d %b. %H:%M")
+        date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "juli" in datetime_parts:
         datetime_parts[1] = "jul."
-        date_time = datetime.strptime(" ".join(datetime_parts), "%d %b. %H:%M")
+        date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "okt." in datetime_parts:
         datetime_parts[1] = "oct."
-        date_time = datetime.strptime(" ".join(datetime_parts), "%d %b. %H:%M")
+        date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     else:
-        date_time = datetime.strptime(" ".join(datetime_parts), "%d %b. %H:%M")
+        date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
 
     return date_time
