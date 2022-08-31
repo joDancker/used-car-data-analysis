@@ -527,7 +527,11 @@ def extract_int_number(string):
         number as integer
     """
     if string is not None:
-        return int("".join(re.findall(r"\d+", string)))
+        num = "".join(re.findall(r"\d+", string))
+        if num != "":
+            return int(num)
+        else:
+            return None
     else:
         return None
 
