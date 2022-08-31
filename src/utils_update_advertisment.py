@@ -27,7 +27,7 @@ def update_car_history(history_of_car, old_value):
     if history_of_car.isna().values:
         history_of_car = str(old_value)
     else:
-        history_of_car = str(old_value) + ", " + str(history_of_car)
+        history_of_car = str(old_value) + ", " + str(history_of_car.item())
 
     return history_of_car
 
