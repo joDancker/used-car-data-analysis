@@ -173,23 +173,23 @@ def extract_publication_datetime(date_time):
     elif any("söndag" in string.lower() for string in datetime_parts):
         date_time = datetime_of_publication(6, datetime_parts[-1])
     elif "mars" in datetime_parts:
-        datetime_parts[1] = "mar."
+        datetime_parts = [sub.replace("mars", "mar.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "maj" in datetime_parts:
-        datetime_parts[1] = "may."
+        datetime_parts = [sub.replace("maj", "may.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "juni" in datetime_parts:
-        datetime_parts[1] = "jun."
+        datetime_parts = [sub.replace("juni", "jun.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "juli" in datetime_parts:
-        datetime_parts[1] = "jul."
+        datetime_parts = [sub.replace("juli", "jul.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
-    elif "okt." in datetime_parts:
-        datetime_parts[1] = "oct."
+    elif "okt" in datetime_parts:
+        datetime_parts = [sub.replace("okt", "oct.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     else:
