@@ -104,10 +104,6 @@ def extract_car_characteristics(driver):
         detailed_characteristics_and_parameters,
     ) = scrape_webpage_for_car_characteristics(driver)
 
-    key_characteristics = [
-        characteristic.text for characteristic in key_characteristics
-    ]
-    key_parameters = [parameter.text for parameter in key_parameters]
     car_characteristics = dict(zip(key_characteristics, key_parameters))
 
     car_characteristics["publication_datetime"] = extract_publication_datetime(
@@ -117,10 +113,6 @@ def extract_car_characteristics(driver):
     car_characteristics["price"] = extract_int_number(price)
     car_characteristics["provider"] = provider
 
-    detailed_characteristics_and_parameters = [
-        characteristic.text
-        for characteristic in detailed_characteristics_and_parameters
-    ]
     detailed_car_characteristics = convert_key_value_pair_list_to_dict(
         detailed_characteristics_and_parameters
     )
