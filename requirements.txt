@@ -1,7 +1,12 @@
 black
 flake8
 flake8-docstrings
+fuzzywuzzy
 isort
+ipython
+matplotlib
+nbqa
+nbstripout
 pandas
 pre-commit
 selenium

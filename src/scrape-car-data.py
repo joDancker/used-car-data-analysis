@@ -54,11 +54,7 @@ for result_webpage in range(number_of_result_webpages):
         driver_search_result_overview
     )
 
-    for ad in range(len(all_links_to_car_advertisements)):
-
-        link_to_car_advertisement = all_links_to_car_advertisements[ad].get_attribute(
-            "href"
-        )
+    for link_to_car_advertisement in all_links_to_car_advertisements:
 
         open_webpage(driver_detailed_car_result, link_to_car_advertisement)
         accept_cookies(driver_detailed_car_result)

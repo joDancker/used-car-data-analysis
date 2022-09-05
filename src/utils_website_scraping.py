@@ -293,10 +293,12 @@ def scrape_general_car_characteristic_keys(driver):
     : list
         selenium.WebElements with extracted information
     """
-    return driver.find_elements(
+    elements = driver.find_elements(
         By.CSS_SELECTOR,
         "div[class='TextCallout2__TextCallout2Wrapper-sc-1bir8f0-0 dVkfPB ParamsWithIcons__StyledLabel-sc-hanfos-2 eSsBiw']",  # noqa
     )
+
+    return [element.text for element in elements]
 
 
 def scrape_general_car_characteristic_parameters(driver):
@@ -312,10 +314,12 @@ def scrape_general_car_characteristic_parameters(driver):
     : list
         selenium.WebElements with extracted information
     """
-    return driver.find_elements(
+    elements = driver.find_elements(
         By.CSS_SELECTOR,
         "div[class='TextCallout1__TextCallout1Wrapper-swd73-0 juCWPZ ParamsWithIcons__StyledParamValue-sc-hanfos-3 kvNStP']",  # noqa
     )
+
+    return [element.text for element in elements]
 
 
 def scrape_detailed_car_characteristic_keys_and_parameters(driver):
@@ -333,10 +337,12 @@ def scrape_detailed_car_characteristic_keys_and_parameters(driver):
     : list
         extracted information
     """
-    return driver.find_elements(
+    elements = driver.find_elements(
         By.CSS_SELECTOR,
         "div[class='TextCallout2__TextCallout2Wrapper-sc-1bir8f0-0 dVkfPB Transportstyrelsen__AccordionContentRow-sc-6tq5gz-4 bxCoHS']",  # noqa
     )
+
+    return [element.text for element in elements]
 
 
 def scrape_links_to_car_advertisment(driver):
@@ -371,7 +377,7 @@ def scrape_links_to_car_advertisment(driver):
             "a[class='Link-sc-6wulv7-0 styled__StyledTitleLink-sc-1kpvi4z-11 kVcpUt iqASGc']",  # noqa
         )
 
-    return all_links_to_details
+    return [link.get_attribute("href") for link in all_links_to_details]
 
 
 def scrape_all_providers(driver):

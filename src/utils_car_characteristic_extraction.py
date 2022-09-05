@@ -104,10 +104,6 @@ def extract_car_characteristics(driver):
         detailed_characteristics_and_parameters,
     ) = scrape_webpage_for_car_characteristics(driver)
 
-    key_characteristics = [
-        characteristic.text for characteristic in key_characteristics
-    ]
-    key_parameters = [parameter.text for parameter in key_parameters]
     car_characteristics = dict(zip(key_characteristics, key_parameters))
 
     car_characteristics["publication_datetime"] = extract_publication_datetime(
@@ -117,10 +113,6 @@ def extract_car_characteristics(driver):
     car_characteristics["price"] = extract_int_number(price)
     car_characteristics["provider"] = provider
 
-    detailed_characteristics_and_parameters = [
-        characteristic.text
-        for characteristic in detailed_characteristics_and_parameters
-    ]
     detailed_car_characteristics = convert_key_value_pair_list_to_dict(
         detailed_characteristics_and_parameters
     )
@@ -173,23 +165,23 @@ def extract_publication_datetime(date_time):
     elif any("söndag" in string.lower() for string in datetime_parts):
         date_time = datetime_of_publication(6, datetime_parts[-1])
     elif "mars" in datetime_parts:
-        datetime_parts[1] = "mar."
+        datetime_parts = [sub.replace("mars", "mar.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "maj" in datetime_parts:
-        datetime_parts[1] = "may."
+        datetime_parts = [sub.replace("maj", "may.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "juni" in datetime_parts:
-        datetime_parts[1] = "jun."
+        datetime_parts = [sub.replace("juni", "jun.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     elif "juli" in datetime_parts:
-        datetime_parts[1] = "jul."
+        datetime_parts = [sub.replace("juli", "jul.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
-    elif "okt." in datetime_parts:
-        datetime_parts[1] = "oct."
+    elif "okt" in datetime_parts:
+        datetime_parts = [sub.replace("okt", "oct.") for sub in datetime_parts]
         date_time = datetime.strptime(" ".join(datetime_parts[1:]), "%d %b. %H:%M")
         date_time = date_time.replace(year=date.today().year)
     else:
