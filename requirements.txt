@@ -9,4 +9,6 @@ nbqa
 nbstripout
 pandas
 pre-commit
+scikit-learn
+seaborn
 selenium
